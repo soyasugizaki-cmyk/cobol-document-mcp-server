@@ -1,45 +1,53 @@
-# MicroCMS Document MCP Server
+# microCMS Document MCP Server
 
-MicroCMS ドキュメントを参照するための MCP (Model Context Protocol) サーバーです。
+microCMS ドキュメントにアクセスするための Model Context Protocol (MCP) サーバーです。
+
+## 概要
+
+この MCP サーバーは、microCMSの提供するドキュメントへのアクセスを提供します。  
+AI アシスタントが最新のドキュメント内容を検索・取得できるようにします。
 
 ## 機能
 
-1. **list_documents**: docs/manual ディレクトリのファイル名一覧を返します
-2. **search_document**: 指定されたファイル名のドキュメント内容を返します
+- **fetch_general**: microCMSの一般的な内容を読み込みます
+- **list_documents**: `docs` ディレクトリ内の利用可能なドキュメントファイル一覧を返します
+- **search_document**: 指定されたドキュメントファイルの内容を取得します
 
-## セットアップ
 
-```bash
-npm install
-npm run build
-```
+## MCP クライアントの設定
 
-## 使用方法
-
-### 開発環境での実行
-
-```bash
-npm run dev
-```
-
-### ビルドして実行
-
-```bash
-npm run build
-npm start
-```
-
-## MCP クライアントでの設定
-
-Claude Desktop や他の MCP クライアントで使用する場合は、以下のような設定を追加してください：
+Claude Desktop や他の MCP クライアントでこのサーバーを使用するには、以下の設定を追加してください：
 
 ```json
 {
   "mcpServers": {
     "microcms-document": {
-      "command": "node",
-      "args": ["/path/to/microcms-document-mcp-server/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "microcms-document-mcp-server"]
     }
   }
 }
-```# microcms-docs-mcp-server
+```
+
+## 利用可能なツール
+
+### fetch_general
+
+microCMSの一般的な情報を返します。
+
+### list_documents
+
+`docs` ディレクトリ内の利用可能なドキュメントファイル名の配列を返します。
+
+**戻り値**: ドキュメントファイル名の配列
+
+### search_document
+
+指定されたドキュメントファイルの内容を取得します。
+
+**戻り値**: ドキュメントの内容（マークダウン形式のテキスト）
+
+
+## ライセンス
+
+このプロジェクトは MIT ライセンスの下で公開されています。
