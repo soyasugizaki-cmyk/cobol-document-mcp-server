@@ -42,4 +42,4 @@ Claude Desktop や他の MCP クライアントで使用する場合は、以下
     }
   }
 }
-```
+```# microcms-docs-mcp-server
