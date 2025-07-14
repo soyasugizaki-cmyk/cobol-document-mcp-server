@@ -1,9 +1,9 @@
 {
   "name": "microcms-document-mcp-server",
   "version": "0.1.5",
-  "description": "",
+  "description": "microCMSのドキュメントを参照するMCPサーバーです。",
   "license": "MIT",
-  "author": "",
+  "author": "himaratsu",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -19,9 +19,7 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "dotenv": "^17.1.0",
     "microcms-js-sdk": "^3.2.0",
-    "turndown": "^7.2.0",
     "@modelcontextprotocol/sdk": "^1.15.0"
   },
   "devDependencies": {
