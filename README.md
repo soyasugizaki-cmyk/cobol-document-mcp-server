@@ -12,9 +12,9 @@ AI アシスタントが最新のドキュメント内容を検索・取得で�
 
 ### 方法1. Cursorに設定する
 
-Cursorに導入する場合、以下のボタンをクリックするだけでインストールが完了します。
+Cursorに導入する場合、以下のリンクをクリックしてインストールできます。
 
-![Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=microcms-document&config=eyJjb21tYW5kIjoibnB4IC15IG1pY3JvY21zLWRvY3VtZW50LW1jcC1zZXJ2ZXIifQ%3D%3D)
+[Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=microcms-document&config=eyJjb21tYW5kIjoibnB4IC15IG1pY3JvY21zLWRvY3VtZW50LW1jcC1zZXJ2ZXIifQ%3D%3D)
 
 ### 方法2. Claude Desktopに設定する（DXT）
 
