@@ -1,6 +1,7 @@
 {
     "dxt_version": "0.1",
     "name": "microcms-document-mcp-server",
+    "display_name": "microCMSドキュメントMCPサーバー",
     "version": "0.1.2",
     "description": "microCMSドキュメントのMCP Serverです。LLMがmicroCMSの最新情報にアクセスして回答できるようになります。",
     "icon": "assets/icon.png",
@@ -21,20 +22,15 @@
     "tools": [
         {
             "name": "fetch_general",
-            "description": "microCMSの一般的な情報を返します。",
-            "parameters": {}
+            "description": "microCMSの一般的な情報を返します。"
         },
         {
             "name": "list_documents",
-            "description": "docsディレクトリ内の利用可能なドキュメントファイル名の配列を返します。",
-            "parameters": {}
+            "description": "docsディレクトリ内の利用可能なドキュメントファイル名の配列を返します。"
         },
         {
             "name": "search_document",
-            "description": "指定されたドキュメントファイルの内容を取得します。",
-            "parameters": {
-                "filename": "取得したいドキュメントファイル名（拡張子を含む）"
-            }
+            "description": "指定されたドキュメントファイルの内容を取得します。"
         }
     ],
     "keywords": [
@@ -45,6 +41,6 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/himaratsu/microcms-document-mcp-server.git"
+        "url": "https://github.com/himaratsu/microcms-document-mcp-server"
     }
 }
