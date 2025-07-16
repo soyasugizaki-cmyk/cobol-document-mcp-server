@@ -29,6 +29,13 @@
   * https://document.microcms.io/{ディレクトリ名}/{コンテンツID}
   * ディレクトリ名は `directory` コンテンツIDは `contentId` というキーでマークダウンファイルに記載されています
 
+## `microcms-document-mcp-server` について
+
+MCPサーバーのToolの使い方を紹介します。
+
+1. 最初に一度 `fetch_general` で全体情報を取得します
+2. 次に `list_documents` で参照可能なドキュメントの一覧を取得します
+3. 最後に `search_document` で必要なドキュメントを探します
 
 # 諸注意
 
