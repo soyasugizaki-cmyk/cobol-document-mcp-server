@@ -45,7 +45,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'list_documents',
-        description: 'microCMSについての質問に答える場合に利用します。ドキュメントディレクトリのファイル名一覧を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。',
+        description: 'microCMSについての質問に答える場合に利用します。ドキュメントディレクトリのファイル名一覧を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
         inputSchema: {
           type: 'object',
           properties: {
@@ -60,7 +60,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'search_document',
-        description: 'microCMSについての質問に答える場合に利用します。ドキュメントから指定されたファイルを検索し、中身を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。',
+        description: 'microCMSについての質問に答える場合に利用します。ドキュメントから指定されたファイルを検索し、中身を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
         inputSchema: {
           type: 'object',
           properties: {
