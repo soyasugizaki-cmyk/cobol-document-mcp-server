@@ -1,6 +1,6 @@
 {
   "name": "microcms-document-mcp-server",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "microCMSのドキュメントを参照するMCPサーバーです。",
   "license": "MIT",
   "author": "himaratsu",
