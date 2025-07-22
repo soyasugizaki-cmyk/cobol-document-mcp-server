@@ -3,7 +3,7 @@
   "version": "0.1.8",
   "description": "microCMSのドキュメントを参照するMCPサーバーです。",
   "license": "MIT",
-  "author": "himaratsu",
+  "author": "microcmsio",
   "type": "module",
   "main": "dist/index.js",
   "bin": {

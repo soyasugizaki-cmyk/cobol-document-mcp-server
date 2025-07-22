@@ -6,8 +6,8 @@
     "description": "microCMSドキュメントのMCP Serverです。LLMがmicroCMSの最新情報にアクセスして回答できるようになります。",
     "icon": "assets/icon.png",
     "author": {
-        "name": "himaratsu",
-        "url": "https://github.com/himaratsu"
+        "name": "microcmsio",
+        "url": "https://github.com/microcmsio"
     },
     "server": {
         "type": "node",
@@ -41,6 +41,6 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/himaratsu/microcms-document-mcp-server"
+        "url": "https://github.com/microcmsio/microcms-document-mcp-server"
     }
 }
