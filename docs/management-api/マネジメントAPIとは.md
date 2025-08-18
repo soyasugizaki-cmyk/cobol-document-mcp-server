@@ -60,3 +60,10 @@ https://document.microcms.io/management-api/get-media-v2
 https://document.microcms.io/management-api/post-media
 
 https://document.microcms.io/management-api/delete-media-v2
+
+メンバー
+----
+
+メンバーに関連するAPIです。
+
+https://document.microcms.io/management-api/get-member
