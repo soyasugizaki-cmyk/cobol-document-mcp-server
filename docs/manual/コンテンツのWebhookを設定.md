@@ -8,7 +8,7 @@ directory: manual
 コンテンツの変更時に外部システムとの連携を行うための機能として、Webhook機能を用意しています。  
 設定は各APIの「API設定」→「Webhook」で行うことができます。  
   
-![](https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/5f05c25e6c8e4232962da9113680369c/CleanShot%202022-04-27%20at%2013.55.54%402x.png)  
+![](https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/02171c5ed6ce4056a7576059a81daa2e/CleanShot%202025-08-21%20at%2010.56.27.png)  
   
 追加ボタンから、Webhookの種類を選び、設定を行ってください。  
 設定できるWebhookは、以下の9種類です。
