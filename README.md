@@ -1,94 +1,88 @@
-# microCMS Document MCP Server
+# COBOL Document MCP Server
 
-microCMS ドキュメントにアクセスするための Model Context Protocol (MCP) サーバーです。
+COBOL言語のドキュメントを参照するためのMCP（Model Context Protocol）サーバーです。
 
 ## 概要
 
-この MCP サーバーは、microCMSの提供するドキュメントへのアクセスを提供します。  
-AI アシスタントが最新のドキュメント内容を検索・取得できるようにします。
+このMCPサーバーは、LLM（Large Language Model）がCOBOL言語に関する質問に回答する際に、適切なドキュメントを提供します。COBOLの文法、データ構造、ファイル操作、プログラム構造などについて、包括的な情報を提供します。
 
+## 機能
 
-## MCP クライアントの設定
+### 提供ツール
 
-### 方法1. Cursorに設定する
+1. **fetch_general** - COBOLの一般的な情報を取得
+2. **list_documents** - 利用可能なドキュメント一覧を取得
+3. **search_document** - 特定のドキュメントの内容を検索
 
-Cursorに導入する場合、以下のリンクをブラウザに貼り付けてインストールできます。
+### ドキュメントカテゴリー
 
+- **language-basics** - COBOL言語の基礎
+- **data-structures** - データ構造について
+- **file-operations** - ファイル操作について
+- **program-structure** - プログラム構造について
+
+## インストール
+
+```bash
+npm install
 ```
-cursor://anysphere.cursor-deeplink/mcp/install?name=microcms-document&config=eyJjb21tYW5kIjoibnB4IC15IG1pY3JvY21zLWRvY3VtZW50LW1jcC1zZXJ2ZXIifQ%3D%3D
+
+## ビルド
+
+```bash
+npm run build
 ```
 
-### 方法2. Claude Codeに設定する
+## 開発
 
-Claude Codeに導入する場合、以下のコマンドを実行で設定を追加できます。
-
-```
-claude mcp add microcms-document -- npx -y microcms-document-mcp-server
+```bash
+npm run dev
 ```
 
-### 方法3. Claude Desktopに設定する（DXT）
+## 使用方法
 
-Claude Desktopに導入する場合、dxtファイルを使って簡単にインストールできます。
+このMCPサーバーは、CursorなどのMCP対応エディタで使用できます。
 
-1. リリースページ から最新の microcms-document-mcp-server.dxt をダウンロード
-2. Claude Desktopを起動し、設定 > エクステンション を開く
-3. ダウンロードしたdxtファイルをClaude Desktopにドラッグ＆ドロップ
-
-### 方法4. その他のMCPクライアントに設定する
-
-その他のMCPクライアントに導入する場合、設定ファイルに以下を追加してください。
+### 設定例
 
 ```json
 {
   "mcpServers": {
-    "microcms-document": {
-      "command": "npx",
-      "args": ["-y", "microcms-document-mcp-server"]
+    "cobol-document": {
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/index.js"],
+      "env": {}
     }
   }
 }
 ```
 
-## 利用方法
+## ドキュメント構成
 
-セットアップ後、microCMSについての質問をするとAIが必要に応じてドキュメントを読み、回答します。
-チャットの文章に `use microcms-docs-mcp` と書くと明示的にMCPの利用を依頼することもできます。
-
-microCMSの仕様について質問する
 ```
-microCMSで、下書きで登録済みのコンテンツをAPI経由で公開したい。
-どのようなリクエストを送ればいい？
-```
-
-microCMSのドキュメントを読みながら実装してもらう
-```
-microCMSで、特定の日付以降に更新されたコンテンツの一覧を取得するスクリプトを作ります。
-
-- 環境変数でサービスIDとAPIキーを指定
-- コマンドライン引数でAPIエンドポイントと基準となる日付を指定
-- 結果は整形して表示
-
-言語はJavaScriptでお願いします。
-
-use microcms-docs-mcp
+docs/
+├── general.md                    # COBOL仕様概要
+├── language-basics/             # 言語基礎
+│   └── COBOL言語の基礎.md
+├── data-structures/             # データ構造
+│   └── データ構造について.md
+├── file-operations/             # ファイル操作
+│   └── ファイル操作について.md
+└── program-structure/           # プログラム構造
+    └── プログラム構造について.md
 ```
 
+## 特徴
 
-## 利用可能なツール
-
-### fetch_general
-
-microCMSの一般的な情報を返します。
-
-### list_documents
-
-`docs` ディレクトリ内の利用可能なドキュメントファイル名の配列を返します。
-
-### search_document
-
-指定されたドキュメントファイルの内容を取得します。
-
+- **包括的な情報**: COBOL言語の主要な側面をカバー
+- **実用的な例**: 実際のコード例とベストプラクティス
+- **日本語対応**: 日本語でのドキュメント提供
+- **構造化された情報**: カテゴリー別の整理された情報
 
 ## ライセンス
 
-このプロジェクトは MIT ライセンスの下で公開されています。
+MIT License
+
+## 貢献
+
+COBOLに関するドキュメントの改善や追加にご協力ください。

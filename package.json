@@ -1,13 +1,13 @@
 {
-  "name": "microcms-document-mcp-server",
-  "version": "0.2.0",
-  "description": "microCMSのドキュメントを参照するMCPサーバーです。",
+  "name": "cobol-document-mcp-server",
+  "version": "0.1.0",
+  "description": "COBOL言語のドキュメントを参照するMCPサーバーです。",
   "license": "MIT",
-  "author": "microcmsio",
+  "author": "cobol-document-mcp-server",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "microcms-document-mcp-server": "dist/index.js"
+    "cobol-document-mcp-server": "dist/index.js"
   },
   "files": [
     "dist",
@@ -19,7 +19,6 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "microcms-js-sdk": "^3.2.0",
     "@modelcontextprotocol/sdk": "^1.15.0"
   },
   "devDependencies": {

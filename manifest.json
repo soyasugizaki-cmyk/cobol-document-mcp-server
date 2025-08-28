@@ -1,13 +1,13 @@
 {
     "dxt_version": "0.1",
-    "name": "microcms-document-mcp-server",
-    "display_name": "microCMSドキュメントMCPサーバー",
-    "version": "0.2.0",
-    "description": "microCMSドキュメントのMCP Serverです。LLMがmicroCMSの最新情報にアクセスして回答できるようになります。",
+    "name": "cobol-document-mcp-server",
+    "display_name": "COBOLドキュメントMCPサーバー",
+    "version": "0.1.0",
+    "description": "COBOL言語のドキュメントのMCP Serverです。LLMがCOBOLの最新情報にアクセスして回答できるようになります。",
     "icon": "assets/icon.png",
     "author": {
-        "name": "microcmsio",
-        "url": "https://github.com/microcmsio"
+        "name": "cobol-document-mcp-server",
+        "url": "https://github.com/cobol-document-mcp-server"
     },
     "server": {
         "type": "node",
@@ -22,7 +22,7 @@
     "tools": [
         {
             "name": "fetch_general",
-            "description": "microCMSの一般的な情報を返します。"
+            "description": "COBOLの一般的な情報を返します。"
         },
         {
             "name": "list_documents",
@@ -34,13 +34,13 @@
         }
     ],
     "keywords": [
-        "microcms",
-        "headlesscms",
+        "cobol",
+        "programming",
         "document"
     ],
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/microcmsio/microcms-document-mcp-server"
+        "url": "https://github.com/cobol-document-mcp-server/cobol-document-mcp-server"
     }
 }

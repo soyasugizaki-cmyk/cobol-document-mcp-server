@@ -1,21 +1,28 @@
 #!/usr/bin/env node
+// 基本的にここはイジる必要なし
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ErrorCode, ListToolsRequestSchema, McpError, } from '@modelcontextprotocol/sdk/types.js';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const DOCS_DIR = path.join(__dirname, '..', 'docs');
-// 利用可能なカテゴリー
-const AVAILABLE_CATEGORIES = ['manual', 'content-api', 'management-api', 'image-api'];
+// ディレクトリのパスを設定
+const __filename = fileURLToPath(import.meta.url); // このファイルのurlを取得
+const __dirname = path.dirname(__filename); // このファイルのディレクトリを取得
+const DOCS_DIR = path.join(__dirname, '..', 'docs'); // ドキュメントのディレクトリを取得
+// ドキュメントのカテゴリーを定義
+const AVAILABLE_CATEGORIES = ['language-basics', 'data-structures', 'file-operations', 'program-structure'];
 const server = new Server({
-    name: 'microcms-document-mcp-server',
+    name: 'cobol-document-mcp-server',
     version: '1.0.0',
 }, {
     capabilities: {
-        tools: {},
+        tools: {}, // 今は空だが、後から追加していく
+        // ここで回答のプロンプトを作成する
+        prompt: {
+            role: 'user',
+            content: 'You are a helpful assistant that can answer questions about the COBOL programming language.',
+        },
     },
 });
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -23,7 +30,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         tools: [
             {
                 name: 'fetch_general',
-                description: 'microCMSについての質問に答える場合、まずこのツールを利用します。docs/general.md の内容を返します。これにはmicroCMS全体の概要や共通情報が書かれています。',
+                description: 'COBOLについての質問に答える場合、まずこのツールを利用します。docs/general.md の内容を返します。これにはCOBOL全体の概要や共通情報が書かれています。',
                 inputSchema: {
                     type: 'object',
                     properties: {},
@@ -32,14 +39,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             {
                 name: 'list_documents',
-                description: 'microCMSについての質問に答える場合に利用します。ドキュメントディレクトリのファイル名一覧を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
+                description: 'COBOLについての質問に答える場合に利用します。ドキュメントディレクトリのファイル名一覧を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
                 inputSchema: {
                     type: 'object',
                     properties: {
                         category: {
                             type: 'string',
-                            description: '検索するカテゴリー（マニュアル: manual, content-api, management-api, image-api）。指定しない場合は全カテゴリーを対象とします。',
-                            enum: ['manual', 'content-api', 'management-api', 'image-api'],
+                            description: '検索するカテゴリー（言語基礎: language-basics, データ構造: data-structures, ファイル操作: file-operations, プログラム構造: program-structure）。指定しない場合は全カテゴリーを対象とします。',
+                            enum: ['language-basics', 'data-structures', 'file-operations', 'program-structure'],
                         },
                     },
                     required: [],
@@ -47,7 +54,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             {
                 name: 'search_document',
-                description: 'microCMSについての質問に答える場合に利用します。ドキュメントから指定されたファイルを検索し、中身を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
+                description: 'COBOLについての質問に答える場合に利用します。ドキュメントから指定されたファイルを検索し、中身を返します。カテゴリーを指定することで特定のサブディレクトリのみを対象にできます。\n\nまだ `fetch_general` で全体情報を取得していない場合は、最初に `fetch_general` を実行してください。',
                 inputSchema: {
                     type: 'object',
                     properties: {
@@ -57,8 +64,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                         },
                         category: {
                             type: 'string',
-                            description: '検索するカテゴリー（manual, content-api, management-api, image-api）。指定しない場合は全カテゴリーから検索します。',
-                            enum: ['manual', 'content-api', 'management-api', 'image-api'],
+                            description: '検索するカテゴリー（language-basics, data-structures, file-operations, program-structure）。指定しない場合は全カテゴリーから検索します。',
+                            enum: ['language-basics', 'data-structures', 'file-operations', 'program-structure'],
                         },
                     },
                     required: ['filename'],
@@ -68,6 +75,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     };
 });
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    // requestはCallToolRequestSchemaの型を持っている
     try {
         if (request.params.name === 'list_documents') {
             const { category } = request.params.arguments;
@@ -156,19 +164,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 const content = await fs.readFile(filePath, 'utf-8');
                 let responseText = `カテゴリー: ${foundCategory}\nファイル: ${filename}\n\n${content}`;
                 // 追加: カテゴリーごとのイントロを含める
-                if (category === 'content-api') {
-                    const introPath = path.join(DOCS_DIR, 'content-api', 'コンテンツAPIとは.md');
+                if (category === 'language-basics') {
+                    const introPath = path.join(DOCS_DIR, 'language-basics', 'COBOL言語の基礎.md');
                     try {
                         const introContent = await fs.readFile(introPath, 'utf-8');
-                        responseText = `【コンテンツAPIとは】\n${introContent}\n\n---\n` + responseText;
+                        responseText = `【COBOL言語の基礎】\n${introContent}\n\n---\n` + responseText;
                     }
                     catch { }
                 }
-                else if (category === 'management-api') {
-                    const introPath = path.join(DOCS_DIR, 'management-api', 'マネジメントAPIとは.md');
+                else if (category === 'data-structures') {
+                    const introPath = path.join(DOCS_DIR, 'data-structures', 'データ構造について.md');
                     try {
                         const introContent = await fs.readFile(introPath, 'utf-8');
-                        responseText = `【マネジメントAPIとは】\n${introContent}\n\n---\n` + responseText;
+                        responseText = `【データ構造について】\n${introContent}\n\n---\n` + responseText;
                     }
                     catch { }
                 }
