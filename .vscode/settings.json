@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "cobol-document": {
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/index.js"],
+      "env": {}
+    }
+  }
+}
